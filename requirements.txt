@@ -1,0 +1,9 @@
+langchain
+langchain-community
+chromadb
+sentence-transformers
+pypdf
+python-dotenv
+streamlit
+google-generativeai
+numpy>=2.0.0
