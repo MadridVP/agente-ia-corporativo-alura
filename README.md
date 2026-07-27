@@ -23,29 +23,19 @@ El agente implementa el patrón **RAG (Retrieval-Augmented Generation)**: en lug
 ---
 
 ## 🏗️ Arquitectura
-Colaborador
-│
-▼
-Interfaz de chat (Streamlit)
-│
-▼
-┌─────────────────────────────────────────┐
-│ PIPELINE RAG │
-│ │
-│ 1. Extracción y limpieza de texto (PDF) │
-│ 2. Chunking (fragmentos con overlap) │
-│ 3. Embeddings (modelo de embeddings) │
-│ 4. Indexación vectorial (ChromaDB) │
-│ 5. Búsqueda semántica + metadatos │
-│ 6. Generación de respuesta (LLM) │
-│ 7. Citación de la fuente │
-└─────────────────────────────────────────┘
-│
-▼
-Respuesta + fuente citada (documento/sección)
-│
-▼
-Desplegado en Oracle Cloud Infrastructure (OCI Compute)
+
+El flujo del agente sigue estos pasos:
+
+1. **Colaborador** hace una pregunta en la interfaz de chat (Streamlit)
+2. **Extracción y limpieza** de texto de los PDFs
+3. **Chunking**: división del texto en fragmentos con overlap
+4. **Embeddings**: generación de vectores semánticos de cada fragmento
+5. **Indexación vectorial** en ChromaDB
+6. **Búsqueda semántica** + filtrado por metadatos según la pregunta
+7. **Generación de respuesta** con el LLM (Google Gemini), basada solo en el contexto recuperado
+8. **Citación de la fuente**: cada respuesta indica el documento y página de origen
+
+Todo el sistema corre desplegado en **Oracle Cloud Infrastructure (OCI Compute)**.
 ---
 
 ## 🛠️ Tecnologías
